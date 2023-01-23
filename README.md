@@ -11,3 +11,4 @@ You may also see any lint errors in the console.
 - react-route
 - react-hook-form
 - axios
+- react-spinners

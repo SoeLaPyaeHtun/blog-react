@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Blog = ({blog}) => {
   return (
@@ -10,7 +11,7 @@ const Blog = ({blog}) => {
       <Card.Text>
        {blog.description.substring(0,150)+'...'}
       </Card.Text>
-      <Button variant="primary">Go somewhere</Button>
+      <Link variant="primary" className='btn btn-primary' to={`blogs/${blog.id}`}>Detail</Link>
     </Card.Body> 
   </Card>
   )

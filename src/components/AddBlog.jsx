@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { set, useForm } from 'react-hook-form'
 import { api } from '../api';
 import { v4 as uuidv4} from 'uuid';
 import { useNavigate } from 'react-router';
+import { reducer, initialState } from '../reducer'
+import { ActionTypes } from '../reducer/actionTypes';
 
 const AddBlog = () => {
 
@@ -13,12 +15,14 @@ const AddBlog = () => {
 
     const nagivate = useNavigate();
 
-
+    const [ state, dispatch ] = useReducer(reducer, initialState)
 
     const onSubmit = async (data) => {
         setIsloading(true)
         data = {id : uuidv4(), ...data}
         const res = await api.post('/blogs',data)
+
+        dispatch({type: ActionTypes.ADD_BLOG, payload: res.data})
         setIsloading(false)
         nagivate('/')
     }

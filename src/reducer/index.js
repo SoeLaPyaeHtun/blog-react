@@ -14,5 +14,15 @@ export const reducer = (state, {type, payload}) => {
             blogs: payload
 
         }
+
+        case ActionTypes.ADD_BLOG : return {
+            ...state,
+            blogs: [...state.blogs, payload]
+        }
+
+        case ActionTypes.SELECTED_BLOG : return {
+            ...state,
+            blog: payload
+        }
     }
 }
